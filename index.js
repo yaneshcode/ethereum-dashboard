@@ -11,12 +11,43 @@ const API_URL_GASPRICE = "https://api.etherscan.io/api?module=proxy&action=eth_g
 const FULL_URL = API_URL + TOKEN;
 
 window.addEventListener("load", () => {
-	request();	
+	refresh();	
 });
 
+function refresh() {
 
-function request() {
-    // price
+    getEthPrice();
+    getGasPrice();
+    getTotalSupply();
+    getLastBlock();
+
+}
+
+function getBlockInfo(blockNumber) {
+    // take this block number and get more info
+    let url = "https://api.etherscan.io/api?module=proxy&action=eth_getBlockByNumber&tag=" + blockNumber + "&boolean=true&apikey=" + TOKEN;
+    
+    fetch(url).then(function(res) {
+        res.json().then(function (data) {
+            let value = data.result;
+            console.log(data.result);
+            
+            let numTx = value.transactions.length
+            document.querySelector("#num-tx").innerHTML = numTx;
+            
+            document.querySelector("#difficulty").innerHTML = value.difficulty;
+            document.querySelector("#block-timestamp").innerHTML = value.timestamp;
+            document.querySelector("#block-gas-limit").innerHTML = value.gasLimit;
+            document.querySelector("#block-gas-used").innerHTML = value.gasUsed;
+            document.querySelector("#block-nonce").innerHTML = value.nonce;
+            document.querySelector("#block-miner").innerHTML = value.miner;
+        });
+        
+    });
+}
+
+function getEthPrice() {
+        // price
     fetch(API_URL_ETHPRICE)
         .then(function(res) {
             console.log(res);
@@ -33,8 +64,10 @@ function request() {
         .catch(function(err) {
             console.log(err);
         });
-        
-    // total supply
+}
+
+function getTotalSupply() {
+        // total supply
     fetch(API_URL_ETHSUPPLY)
         .then(function(res) {
             console.log(res);
@@ -51,50 +84,10 @@ function request() {
         .catch(function(err) {
             console.log(err);
         });
-        
-    // last block
-    fetch(API_URL_LASTBLOCK)
-        .then(function(res) {
-            console.log(res);
-            let result = res.json();
-            
-            result.then(function(data){
-                let block = document.querySelector("#last-block");
-                let block2 = document.querySelector("#last-block-tx");
-                let lastBlock = data.result;
-   
-                console.log(data.result);
-                block.innerHTML = lastBlock;
-                block2.innerHTML = lastBlock;
-                
-                // take this block number and get more info
-                let url = "https://api.etherscan.io/api?module=proxy&action=eth_getBlockByNumber&tag=" + lastBlock + "&boolean=true&apikey=" + TOKEN;
-                
-                fetch(url).then(function(res) {
-                    res.json().then(function (data) {
-                        let value = data.result;
-                        console.log(data.result);
-                        
-                        let numTx = value.transactions.length
-                        document.querySelector("#num-tx").innerHTML = numTx;
-                        
-                        document.querySelector("#difficulty").innerHTML = value.difficulty;
-                        document.querySelector("#block-timestamp").innerHTML = value.timestamp;
-                        document.querySelector("#block-gas-limit").innerHTML = value.gasLimit;
-                        document.querySelector("#block-gas-used").innerHTML = value.gasUsed;
-                        document.querySelector("#block-nonce").innerHTML = value.nonce;
-                        document.querySelector("#block-miner").innerHTML = value.miner;
-                    });
-                    
-                });
-            })
+}
 
-        })
-        .catch(function(err) {
-            console.log(err);
-        });
-
-            // last block
+function getGasPrice() {
+                // gas price
     fetch(API_URL_GASPRICE)
         .then(function(res) {
             console.log(res);
@@ -111,7 +104,32 @@ function request() {
         .catch(function(err) {
             console.log(err);
         });
-        
-
 }
+
+function getLastBlock() {
+        // last block
+    fetch(API_URL_LASTBLOCK)
+        .then(function(res) {
+            console.log(res);
+            let result = res.json();
+            
+            result.then(function(data){
+                let block = document.querySelector("#last-block");
+                let block2 = document.querySelector("#last-block-tx");
+                let lastBlock = data.result;
+   
+                console.log(data.result);
+                block.innerHTML = lastBlock;
+                block2.innerHTML = lastBlock;
+                
+                getBlockInfo(lastBlock);
+
+            })
+
+        })
+        .catch(function(err) {
+            console.log(err);
+        });
+}
+
 
