@@ -10,8 +10,12 @@ const API_URL_GASPRICE = `https://api.etherscan.io/api?module=proxy&action=eth_g
 const API_URL_BLOCK = (blockNumber) => `https://api.etherscan.io/api?module=proxy&action=eth_getBlockByNumber&tag=${blockNumber}&boolean=true&apikey=${TOKEN}`;
 
 window.addEventListener("load", () => {
-	refresh();	
+    refresh();
 });
+
+function autoRefresh() {
+        setInterval(refresh, 10000);
+}
 
 function refresh() {
 
