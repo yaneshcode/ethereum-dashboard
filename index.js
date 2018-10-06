@@ -6,6 +6,7 @@ const API_URL_ETHSUPPLY = `https://api.etherscan.io/api?module=stats&action=eths
 const API_URL_LASTBLOCK = `https://api.etherscan.io/api?module=proxy&action=eth_blockNumber&apikey=${TOKEN}`;
 const API_URL_GASPRICE = `https://api.etherscan.io/api?module=proxy&action=eth_gasPrice&apikey=${TOKEN}`;
 
+// template literal to build url string with block Number
 const API_URL_BLOCK = (blockNumber) => `https://api.etherscan.io/api?module=proxy&action=eth_getBlockByNumber&tag=${blockNumber}&boolean=true&apikey=${TOKEN}`;
 
 window.addEventListener("load", () => {
