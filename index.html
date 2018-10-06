@@ -10,18 +10,26 @@
         <h4>A dashboard containing the overall health and status of the Ethereum Network – based on the last block mined</h4>
         <div id="main-dashboard">
             <h3>Ethereum Network Status</h3>
-            Last block: <div id="last-block"></div>
-            Price: <div id="price"></div>
-            Market cap: <div id="market-cap"></div>
-            Hash rate: <div id="hash-rate"></div>
-            Transactions: <div id="transactions"></div>
-            Network difficulty: <div id="network-difficulty"></div>
+            
+            Price: <div id="eth-price"></div><br>
+            Gas Price: <div id="gas-price"></div><br>
+            Total supply: <div id="supply"></div><br>
+            Last block: <div id="last-block"></div><br>
+            Network Difficulty: <div id="difficulty"></div></br>
+            <button onclick="request()">Refresh</button>
+            <br>
         </div>
         <br>
         <div id="extra-dashboard">
-            <p>
-                <h4>Extra information of current Ethereum blockchain</h4>
-                Transactions:
+                <h3>Last Ethereum Blockchain block information</h3>
+                <h4>Block number: <div id="last-block-tx"></div></h4>
+                Timestamp: <div id="block-timestamp"></div><br>
+                Number of Transactions: <div id="num-tx"></div><br>
+                Gas Limit: <div id="block-gas-limit"></div><br>
+                Gas Used: <div id="block-gas-used"></div><br>
+                Nonce: <div id="block-nonce"></div><br>
+                Miner: <div id="block-miner"></div><br>
+                
         </div>
     </body>
 </html>
