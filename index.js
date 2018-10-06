@@ -1,14 +1,12 @@
 
-const API_URL = "https://api.etherscan.io/api?module=stats&action=ethprice&apikey=YourApiKeyToken";
 const TOKEN = "FYN6DQJ8XWIQXXVYBJU9QNKY56KC9MMB5E";
 
-const API_URL_ETHPRICE = "https://api.etherscan.io/api?module=stats&action=ethprice&apikey=" + TOKEN;
-const API_URL_ETHSUPPLY = "https://api.etherscan.io/api?module=stats&action=ethsupply&apikey=" + TOKEN;
-const API_URL_LASTBLOCK = "https://api.etherscan.io/api?module=proxy&action=eth_blockNumber&apikey=" + TOKEN;
-const API_URL_GASPRICE = "https://api.etherscan.io/api?module=proxy&action=eth_gasPrice&apikey=" + TOKEN;
+const API_URL_ETHPRICE = `https://api.etherscan.io/api?module=stats&action=ethprice&apikey=${TOKEN}`;
+const API_URL_ETHSUPPLY = `https://api.etherscan.io/api?module=stats&action=ethsupply&apikey=${TOKEN}`;
+const API_URL_LASTBLOCK = `https://api.etherscan.io/api?module=proxy&action=eth_blockNumber&apikey=${TOKEN}`;
+const API_URL_GASPRICE = `https://api.etherscan.io/api?module=proxy&action=eth_gasPrice&apikey=${TOKEN}`;
 
-
-const FULL_URL = API_URL + TOKEN;
+const API_URL_BLOCK = (blockNumber) => `https://api.etherscan.io/api?module=proxy&action=eth_getBlockByNumber&tag=${blockNumber}&boolean=true&apikey=${TOKEN}`;
 
 window.addEventListener("load", () => {
 	refresh();	
@@ -25,9 +23,8 @@ function refresh() {
 
 function getBlockInfo(blockNumber) {
     // take this block number and get more info
-    let url = "https://api.etherscan.io/api?module=proxy&action=eth_getBlockByNumber&tag=" + blockNumber + "&boolean=true&apikey=" + TOKEN;
     
-    fetch(url).then(function(res) {
+    fetch(API_URL_BLOCK(blockNumber)).then(function(res) {
         res.json().then(function (data) {
             let value = data.result;
             console.log(data.result);
