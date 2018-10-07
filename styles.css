@@ -42,25 +42,30 @@
 .dashboard-container {
         display: flex;
         justify-content: center;
-        align-items: center;
+        align-items: stretch;
         flex-direction: row;
 }
 
 
 .main-dashboard {
-        height: 100%;
+
         width: 50%;    
-        border: 1px solid black;
+
         background-color: blue;
-        	align-self: flex-end;
-	margin-bottom: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        
 }
 
 .extra-dashboard {
-        height: 100%;
         width: 50%;
-            border: 1px solid black;
+        display: flex;
             background-color: cyan;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
 
 }
 
