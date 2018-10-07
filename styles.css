@@ -1,4 +1,85 @@
-#main-dashboard,
-#extra-dashboard {
-    border: 1px solid black;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.main-container {
+    height:100%;
+    width:100%;
+   background-color:red;
+}
+.menu-container {
+  color: #fff;
+  background-color: #5995DA;  /* Blue */
+  padding: 20px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.menu {
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.header-container{
+	color: #5995DA;
+	background-color: #D6e9fe;
+	display: flex;
+	justify-content: center;
+}
+
+.header {
+	width: 80%;
+	height: 100px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+        flex-direction: column;
+}
+
+.dashboard-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+}
+
+
+.main-dashboard {
+        height: 100%;
+        width: 50%;    
+        border: 1px solid black;
+        background-color: blue;
+        	align-self: flex-end;
+	margin-bottom: 20px;
+}
+
+.extra-dashboard {
+        height: 100%;
+        width: 50%;
+            border: 1px solid black;
+            background-color: cyan;
+
+}
+
+.footer {
+	display:flex;
+	justify-content: space-between;
+        align-self:flex-end;
+}
+
+.footer-item {
+	border: 1px solid #fff;
+	background-color: #D6e9fe;
+	height:40px;
+	flex: 1;	
+}
+
+.footer-one,
+.footer-three {
+	flex: initial;
+	background-color: #5995da;
+	width: 200px;
 }
