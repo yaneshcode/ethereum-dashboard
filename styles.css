@@ -75,6 +75,9 @@
 	background-color: #D6e9fe;
 	height:40px;
 	flex: 1;	
+        display: flex;
+        align-items: center;
+        justify-content: center;
 }
 
 .footer-one,
