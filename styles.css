@@ -5,8 +5,9 @@
 }
 
 .main-container {
-    height:100%;
-    width:100%;
+    display:flex;
+    flex-direction: column;
+    align-items: stretch;
    background-color:red;
 }
 .menu-container {
@@ -46,7 +47,7 @@
         flex-direction: row;
 }
 
-
+.extra-dashboard ,
 .main-dashboard {
 
         width: 50%;    
@@ -56,27 +57,26 @@
         flex-direction: column;
         align-items: center;
         justify-content: space-between;
+        padding: 20px;
         
 }
 
 .extra-dashboard {
-        width: 50%;
-        display: flex;
             background-color: cyan;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-between;
-
 }
 
+.dashboard-container h3 {
+    margin-bottom: 20px;
+}
 .footer {
 	display:flex;
+        width: 100%;
 	justify-content: space-between;
-        align-self:flex-end;
+        
 }
 
 .footer-item {
-	border: 1px solid #fff;
+	//border: 1px solid #fff;
 	background-color: #D6e9fe;
 	height:40px;
 	flex: 1;	
