@@ -12,6 +12,7 @@ const API_URL_BLOCK = (blockNumber) => `https://api.etherscan.io/api?module=prox
 // load event in order to start modifying DOM
 window.addEventListener("load", () => {
     refresh();
+    autoRefresh();
 });
 
 // auto refresh function will fetch new data every 10s
@@ -48,10 +49,10 @@ function getBlockInfo(blockNumber) {
                     let value = data.result;
 
                     document.querySelector("#difficulty").innerHTML = parseInt(value.difficulty, 16) / 1000000000 + " TH";
-                    document.querySelector("#block-timestamp").innerHTML = parseInt(value.timestamp, 16);
-                    document.querySelector("#block-gas-limit").innerHTML = value.gasLimit;
-                    document.querySelector("#block-gas-used").innerHTML = value.gasUsed;
-                    document.querySelector("#block-nonce").innerHTML = value.nonce;
+                    //document.querySelector("#block-timestamp").innerHTML = parseInt(value.timestamp, 16);
+                    document.querySelector("#block-gas-limit").innerHTML = parseInt(value.gasLimit, 16) + " gas";
+                    document.querySelector("#block-gas-used").innerHTML = parseInt(value.gasUsed, 16) + " gas";
+                    document.querySelector("#block-nonce").innerHTML = parseInt(value.nonce, 16);
                     document.querySelector("#block-miner").innerHTML = value.miner;
                     document.querySelector("#num-tx").innerHTML =value.transactions.length;
                 });
