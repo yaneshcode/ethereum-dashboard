@@ -21,6 +21,13 @@ function autoRefresh() {
 
 // main control function
 function refresh() {
+    // update timestamp
+    let currentTime = new Date();
+    document.querySelector("#date").innerHTML = currentTime.toDateString();
+    
+    document.querySelector("#last-update").innerHTML = "Last updated: " + currentTime.toTimeString();
+    
+    // fetch data
     getEthPrice();
     getGasPrice();
     getTotalSupply();
@@ -32,21 +39,21 @@ function getBlockInfo(blockNumber) {
     
     fetch(API_URL_BLOCK(blockNumber))
         .then(function(res) {
-        
+            console.log(res);
             // check if status is ok
             if (res.status == 200) {
                 
                  // go through the result promise and update display
                 res.json().then(function (data) {
                     let value = data.result;
-                    
-                    document.querySelector("#num-tx").innerHTML = value.transactions.length;
-                    document.querySelector("#difficulty").innerHTML = value.difficulty;
-                    document.querySelector("#block-timestamp").innerHTML = value.timestamp;
+
+                    document.querySelector("#difficulty").innerHTML = parseInt(value.difficulty, 16) / 1000000000 + " TH";
+                    document.querySelector("#block-timestamp").innerHTML = parseInt(value.timestamp, 16);
                     document.querySelector("#block-gas-limit").innerHTML = value.gasLimit;
                     document.querySelector("#block-gas-used").innerHTML = value.gasUsed;
                     document.querySelector("#block-nonce").innerHTML = value.nonce;
                     document.querySelector("#block-miner").innerHTML = value.miner;
+                    document.querySelector("#num-tx").innerHTML =value.transactions.length;
                 });
             } else {
                 // return status is not OK
@@ -133,7 +140,7 @@ function getGasPrice() {
                     let element = document.querySelector("#gas-price");
                     let value = data.result;
                     console.log(data.result);
-                    element.innerHTML = value + " gwei";
+                    element.innerHTML = parseInt(value, 16) / 1000000000 + " gwei";
                 })
             } else {
                 // return status is not OK
@@ -164,8 +171,8 @@ function getLastBlock() {
                     let lastBlock = data.result;
     
                     console.log(data.result);
-                    block.innerHTML = lastBlock;
-                    block2.innerHTML = lastBlock;
+                    block.innerHTML = parseInt(lastBlock, 16);
+                    block2.innerHTML = parseInt(lastBlock, 16);
                     
                     getBlockInfo(lastBlock);
 

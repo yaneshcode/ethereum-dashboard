@@ -12,7 +12,7 @@
 }
 .menu-container {
   color: #fff;
-  background-color: #5995DA;  /* Blue */
+  background-color: #5995DA; 
   padding: 20px 0;
   display: flex;
   justify-content: center;
@@ -25,69 +25,65 @@
 }
 
 .header-container{
-	color: #5995DA;
-	background-color: #D6e9fe;
-	display: flex;
-	justify-content: center;
+    color: #5995DA;
+    background-color: #D6e9fe;
+    display: flex;
+    justify-content: center;
 }
 
 .header {
-	width: 80%;
-	height: 100px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-        flex-direction: column;
+    width: 80%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .dashboard-container {
-        display: flex;
-        justify-content: center;
-        align-items: stretch;
-        flex-direction: row;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    flex-direction: row;
 }
 
 .extra-dashboard ,
 .main-dashboard {
-
-        width: 50%;    
-
-        background-color: blue;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-between;
-        padding: 20px;
-        
+    width: 50%;    
+    background-color: blue;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
 }
 
 .extra-dashboard {
-            background-color: cyan;
+    background-color: cyan;
 }
 
 .dashboard-container h3 {
     margin-bottom: 20px;
 }
+
 .footer {
-	display:flex;
-        width: 100%;
-	justify-content: space-between;
-        
+    display:flex;
+    width: 100%;
+    justify-content: space-between;
 }
 
 .footer-item {
-	//border: 1px solid #fff;
-	background-color: #D6e9fe;
-	height:40px;
-	flex: 1;	
-        display: flex;
-        align-items: center;
-        justify-content: center;
+    background-color: #D6e9fe;
+    height:40px;
+    flex: 1;	
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .footer-one,
 .footer-three {
-	flex: initial;
-	background-color: #5995da;
-	width: 200px;
+    flex: initial;
+    background-color: #5995da;
+    width: 200px;
 }
